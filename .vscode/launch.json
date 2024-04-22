@@ -1,0 +1,43 @@
+{
+    "version": "0.2.0",
+
+    "configurations": [
+        //Windows
+        {
+            "type": "cppvsdbg",
+            "request": "launch",
+            "name": "Editor Win32",
+            "program": "Genesis.exe",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/Targets/Debug/bin",
+        },
+
+        {
+            "type": "cppvsdbg",
+            "request": "launch",
+            "name": "Game Win32",
+            "program": "Game.exe",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/Targets/Debug/bin",
+        },
+
+        //Linux
+        {
+            "type": "cppdbg",
+            "request": "launch",
+            "name": "Editor Linux",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "cwd": "/home/nesmy/GenDev/Targets/Debug/bin",
+            "program": "${workspaceFolder}/Targets/Debug/bin/KnucklesEditor",
+        },
+
+        {
+            "type": "cppdbg",
+            "request": "launch",
+            "name": "Game Linux",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "cwd": "${workspaceFolder}/Targets/Debug/bin",
+            "program": "${workspaceFolder}/Targets/Debug/bin/Game",
+        },
+    ]
+}

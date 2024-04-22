@@ -1,9 +1,7 @@
 build/
 build
 out/
-out
-.vscode/
-.vscode
+Targets/
 .cache/
 .cache
 

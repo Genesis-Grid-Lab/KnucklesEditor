@@ -1,4 +1,19 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# build output directories
+
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY $<0:>${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $<0:>${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY $<0:>${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_PDB_OUTPUT_DIRECTORY $<0:>${CMAKE_BINARY_DIR}/lib)
+set(EXECUTABLE_OUTPUT_PATH $<0:>${CMAKE_BINARY_DIR}/bin)
+
+# cpp standard options
+
+set(CMAKE_CONFIGURATION_TYPES Debug Release)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS ON)
 set(CMAKE_CXX_STANDARD 17)
 
 project(KnucklesEditor)
@@ -13,17 +28,7 @@ KE_EDITOR
 
 add_subdirectory(vendor/Knuckles )
 
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD 
-  COMMAND "${CMAKE_COMMAND}" -E copy_directory 
-  "${CMAKE_CURRENT_SOURCE_DIR}/vendor/Knuckles/build/Assets"
-  "${CMAKE_CURRENT_SOURCE_DIR}/build/Assets" 
-    COMMENT "Copying assets to output directory")
-
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD 
-  COMMAND "${CMAKE_COMMAND}" -E copy_directory 
-  "${CMAKE_CURRENT_SOURCE_DIR}/vendor/Knuckles/build/Shaders"
-  "${CMAKE_CURRENT_SOURCE_DIR}/build/Shaders" 
-    COMMENT "Copying Shader to output directory")
+# copy resources
 
 target_include_directories(${PROJECT_NAME}
 	PUBLIC include
@@ -35,6 +40,5 @@ target_link_directories(${PROJECT_NAME}
 	)
 
 target_link_libraries(${PROJECT_NAME}
-	${SDL2_LIBRARIES}
 	Knuckles
 	)
