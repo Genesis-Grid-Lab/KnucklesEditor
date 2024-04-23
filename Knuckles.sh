@@ -8,7 +8,7 @@ else
     sudo python3 -m venv ./vendor/Knuckles/Knuckles
     sudo chmod -R a+rwx ./vendor/Knuckles/Knuckles
     source ./vendor/Knuckles/Knuckles/bin/activate
-    pip install conan==1.61.0
+    pip install conan==1.64.0
     echo "Created folder"
 fi
 
